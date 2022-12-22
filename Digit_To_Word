@@ -1,0 +1,79 @@
+/*Write a program in C to read any digit, display in the word.
+Test Data :
+4
+Expected Output :
+Four*/
+#include<stdio.h>
+void ones(int n){
+	switch(n){
+	   case 1: printf("ONE");break;
+	   case 2: printf("TWO");break;
+	   case 3: printf("THREE");break;
+	   case 4: printf("FOUR");break;
+	   case 5: printf("FIVE");break;
+	   case 6: printf("SIX");break;
+	   case 7: printf("SEVEN");break;
+	   case 8: printf("EIGHT");break;
+	   case 9: printf("NINE");break;
+	   default: break;
+	}
+}
+void tens(int n){
+	switch(n){
+       case 10: printf(" TEN ");break;
+	   case 11: printf(" ELEVEN ");break;
+	   case 12: printf(" TWELVE ");break;
+	   case 13: printf(" THIRTEEN ");break;
+	   case 14: printf("FOURTEEN ");break;
+	   case 15: printf(" FIFTEEN");break;
+	   case 16: printf(" SIXTEEN ");break;
+	   case 17: printf(" SEVENTEEN ");break;
+	   case 18: printf(" EIGHTEEN ");break;
+	   case 19: printf(" NINETEEN ");break;
+	   case 20: printf(" TWENTY ");break;
+	   case 21 ... 29: printf(" TWENTY ");
+	                 ones(n%10);break;
+	   case 30 ... 39: printf(" THIRTY ");
+	                    ones(n%10);break;
+	   case 40 ... 49:printf(" FORTY ");
+	                    ones(n%10);break;
+	   case 50 ... 59:printf(" FIFTY ");
+	                    ones(n%10);break;
+	   case 60 ... 69:printf(" SIXTY ");
+	                    ones(n%10);break;
+	   case 70 ... 79:printf(" SEVENTY ");
+	                    ones(n%10);break;
+       case 80 ... 89:printf(" EIGHTY ");
+	                    ones(n%10);break;
+	   case 90 ... 99:printf(" NINTY ");
+	                    ones(n%10);break;
+	                 default : break;  
+}	   
+}
+void hundreds(int n){
+	switch(n){
+        case 100 ... 999:ones(n/100);printf(" HUNDRED");tens(n%100);break;
+}
+}
+void thousands(int n){
+	switch(n){
+	case 1000 ... 9999: ones(n/1000);printf(" THOUSAND ");hundreds(n%1000);break;
+}
+}
+int main(){
+	int n,d=0,cnt=0,i;
+	printf("ENTER NO. IN RANGE(1-10K): ");
+	scanf("%d",&n);
+	d=n;
+	while(d!=0){
+		d=d/10;
+		cnt++;
+	}
+    switch(cnt){
+    	case 1: ones(n);break;
+    	case 2: tens(n);break;
+    	case 3: hundreds(n);break;
+    	case 4: thousands(n);break;
+    	default : printf("INVALID INPUT\n");
+	}
+}
